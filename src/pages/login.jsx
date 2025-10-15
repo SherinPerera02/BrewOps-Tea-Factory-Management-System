@@ -261,7 +261,7 @@ export default function LoginPage() {
                 fontSize: '48px',
                 fontWeight: 'bold',
                 color: '#16a34a',
-                marginTop: '40px'
+                marginTop: '30px'
               }}>
                 Welcome BrewOps
               </h1>
