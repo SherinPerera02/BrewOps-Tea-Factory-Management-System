@@ -33,6 +33,18 @@ const Sidebar = ({ dashboardData, onMenuClick }) => {
   return (
     <div className="sidebar">
       <div className="sidebar-content">
+        {/* Mobile close button */}
+        <button
+          className="mobile-only"
+          style={{ position: 'absolute', top: 8, right: 8, zIndex: 1300, background: 'transparent', border: 'none' }}
+          onClick={() => {
+            // remove any body class that indicates sidebar is open
+            document.body.classList.remove('app-with-sidebar-open');
+          }}
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
         {/* Admin Profile Section */}
         <div className="admin-profile">
           <div className="admin-avatar">

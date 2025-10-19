@@ -6,6 +6,7 @@ import ToursMap from '../components/toursMap';
 import CTA from '../components/CTA';
 import Footer from '../components/footer';
 import '../styles/HomePage.css';
+import '../styles/home-responsive.css';
 
 const Homepage = () => {
   // Function to scroll to different sections

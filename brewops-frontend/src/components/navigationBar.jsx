@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 import ProfileModal from './ProfileModal';
 import './navigationBar.css';
+import '../styles/responsive.css';
 
 // Keep a singleton socket instance to avoid rapid create/destroy cycles
 // (React StrictMode in development can mount/unmount components twice).
@@ -30,6 +31,7 @@ const NavigationBar = ({ onMenuClick }) => {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const navigate = useNavigate();
   const chatEndRef = useRef(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     fetchUserProfile();
@@ -160,6 +162,13 @@ const NavigationBar = ({ onMenuClick }) => {
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // Keep a body-level class to indicate off-canvas sidebar is open (used by responsive.css)
+  useEffect(() => {
+    if (sidebarOpen) document.body.classList.add('app-with-sidebar-open');
+    else document.body.classList.remove('app-with-sidebar-open');
+    return () => document.body.classList.remove('app-with-sidebar-open');
+  }, [sidebarOpen]);
 
   const fetchUserProfile = async () => {
     try {
@@ -460,14 +469,16 @@ const NavigationBar = ({ onMenuClick }) => {
     <>
       <nav className="navbar">
         <div className="navbar-left">
-          {onMenuClick && (
-            <button onClick={onMenuClick} className="hamburger-button">
-              {/* simple hamburger icon */}
-              <svg className="hamburger-icon" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2z" clipRule="evenodd" />
-              </svg>
-            </button>
-          )}
+          {/* Mobile hamburger to open off-canvas sidebar */}
+          <button
+            className="hamburger-button mobile-only"
+            aria-label="Open menu"
+            onClick={() => document.body.classList.add('app-with-sidebar-open')}
+          >
+            <svg className="hamburger-icon" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2z" clipRule="evenodd" />
+            </svg>
+          </button>
           <h1 className="brand-title" onClick={() => navigate('/')}>BrewOps</h1>
         </div>
         <div className="navbar-right">
