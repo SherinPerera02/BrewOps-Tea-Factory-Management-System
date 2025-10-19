@@ -1,0 +1,79 @@
+/* Styles for CreateInventory modal/form */
+.ci-backdrop { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.6); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    z-index:50 }
+
+.ci-modal { 
+    max-width:720px; 
+    width:100%; 
+    margin:0 16px; 
+    background:#fff; 
+    padding:24px; 
+    border-radius:12px; 
+    box-shadow:0 8px 24px rgba(2,6,23,0.2) 
+}
+.ci-title { 
+    font-size:20px; 
+    margin:8px 0 16px; 
+    text-align:center; 
+    font-weight:700; 
+    color:#111827 
+}
+.ci-form { 
+    display:block; 
+    gap:16px 
+}
+.ci-field { 
+    margin-bottom:12px 
+}
+.ci-label { 
+    display:block; 
+    margin-bottom:8px; 
+    color:#374151; 
+    font-weight:600 
+}
+.ci-input { 
+    width:100%; 
+    padding:10px 12px; 
+    border:1px solid #d1d5db; 
+    border-radius:8px; 
+    background:#fff; 
+    color:#0f172a 
+}
+.ci-input[disabled]{ 
+    background:#f3f4f6 
+}
+.ci-note { 
+    font-size:12px; 
+    color:#6b7280; 
+    margin-top:6px 
+}
+.ci-error { 
+    color:#dc2626; 
+    font-size:13px; 
+    margin-top:6px 
+}
+.ci-actions { 
+    display:flex; 
+    gap:12px; 
+    margin-top:12px; 
+}
+.ci-btn { 
+    padding:10px 18px; 
+    border-radius:8px; 
+    cursor:pointer; 
+    border:none 
+}
+.ci-btn-primary { 
+    background:#16a34a; 
+    color:#fff 
+}
+.ci-btn-cancel { 
+    background:#6b7280; 
+    color:#fff 
+}
