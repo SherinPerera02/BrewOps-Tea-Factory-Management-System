@@ -263,7 +263,7 @@ export default function LoginPage() {
                 color: '#16a34a',
                 marginTop: '40px'
               }}>
-                Welcome 
+                Welcome BrewOps
               </h1>
 
               <p style={{
