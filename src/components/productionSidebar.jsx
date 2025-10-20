@@ -9,6 +9,14 @@ import { MdDashboard, MdFactory } from 'react-icons/md';
 import './sidebar.css';
 
 const ProductionSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const handler = () => setIsOpen(o => !o);
+    window.addEventListener('toggleSidebar', handler);
+    return () => window.removeEventListener('toggleSidebar', handler);
+  }, []);
+
   // Get logged-in user info from localStorage or sessionStorage
   const getUserInfo = () => {
     try {
@@ -21,8 +29,13 @@ const ProductionSidebar = ({ dashboardData, activeContent, setActiveContent }) =
 
   const user = getUserInfo();
 
+  const handleClick = (cb) => {
+    try { setIsOpen(false); } catch (e) {}
+    if (cb && typeof cb === 'function') cb();
+  };
+
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-content">
         {/* Production Manager Profile Section */}
         <div className="admin-profile">
@@ -42,7 +55,7 @@ const ProductionSidebar = ({ dashboardData, activeContent, setActiveContent }) =
           </h4>
           
           <div 
-            onClick={() => setActiveContent('dashboard')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('dashboard'))}
             className={`nav-link ${activeContent === 'dashboard' ? 'active' : 'inactive'}`}
             style={{ cursor: 'pointer' }}
           >
@@ -51,7 +64,7 @@ const ProductionSidebar = ({ dashboardData, activeContent, setActiveContent }) =
           </div>
           
           <div 
-            onClick={() => setActiveContent('inventory-management')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('inventory-management'))}
             className={`nav-link ${activeContent === 'inventory-management' ? 'active' : 'inactive'}`}
             style={{ cursor: 'pointer' }}
           >
@@ -60,7 +73,7 @@ const ProductionSidebar = ({ dashboardData, activeContent, setActiveContent }) =
           </div>
 
                     <div 
-            onClick={() => setActiveContent('production')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('production'))}
             className={`nav-link ${activeContent === 'production' ? 'active' : 'inactive'}`}
             style={{ cursor: 'pointer' }}
           >
@@ -71,7 +84,7 @@ const ProductionSidebar = ({ dashboardData, activeContent, setActiveContent }) =
 
           
           <div 
-            onClick={() => setActiveContent('analytics')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('analytics'))}
             className={`nav-link ${activeContent === 'analytics' ? 'active' : 'inactive'}`}
             style={{ cursor: 'pointer' }}
           >
@@ -80,7 +93,7 @@ const ProductionSidebar = ({ dashboardData, activeContent, setActiveContent }) =
           </div>
           
           <div 
-            onClick={() => setActiveContent('messages')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('messages'))}
             className={`nav-link ${activeContent === 'messages' ? 'active' : 'inactive'}`}
             style={{ cursor: 'pointer' }}
           >

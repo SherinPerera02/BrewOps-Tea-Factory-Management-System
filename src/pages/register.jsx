@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
+import "../styles/auth-responsive.css";
 import registerAnimation from "../assets/register.json";
 import Spinner from "../components/Spinner";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -176,7 +177,7 @@ export default function RegisterPage() {
   return (
     <>
       <Toaster />
-      <div style={{
+      <div className="auth-page" style={{
         width: '100%',
         height: '100vh',
         backgroundColor: '#f9fafb',
@@ -193,7 +194,7 @@ export default function RegisterPage() {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-          <div style={{
+          <div className="auth-card" style={{
             width: '1300px',
             height: '650px',
             backdropFilter: 'blur(4px)',
@@ -203,7 +204,7 @@ export default function RegisterPage() {
             overflow: 'hidden'
           }}>
             {/* Left half */}
-            <div style={{
+            <div className="auth-left" style={{
               width: '50%',
               height: '100%',
               display: 'flex',
@@ -271,7 +272,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Right half */}
-            <div style={{
+            <div className="auth-right" style={{
               width: '50%',
               height: '100%',
               backgroundColor: 'white',
@@ -319,7 +320,7 @@ export default function RegisterPage() {
               </div>
 
               {/* Name */}
-              <div style={{ width: '400px' }}>
+              <div className="auth-field" style={{ width: '400px' }}>
                 <input
                   type="text"
                   name="name"
@@ -344,7 +345,7 @@ export default function RegisterPage() {
               </div>
 
               {/* Email */}
-              <div style={{ width: '400px' }}>
+              <div className="auth-field" style={{ width: '400px' }}>
                 <input
                   type="email"
                   name="email"
@@ -369,7 +370,7 @@ export default function RegisterPage() {
               </div>
 
               {/* Phone */}
-              <div style={{ width: '400px' }}>
+              <div className="auth-field" style={{ width: '400px' }}>
                 <input
                   type="tel"
                   name="phone"
@@ -394,7 +395,7 @@ export default function RegisterPage() {
               </div>
 
               {/* Password */}
-              <div style={{ width: '400px' }}>
+              <div className="auth-field" style={{ width: '400px' }}>
                 <div style={{ position: 'relative' }}>
                   <input
                     type={showPassword ? "text" : "password"}
@@ -435,7 +436,7 @@ export default function RegisterPage() {
               </div>
 
               {/* Confirm Password */}
-              <div style={{ width: '400px' }}>
+              <div className="auth-field" style={{ width: '400px' }}>
                 <div style={{ position: 'relative' }}>
                   <input
                     type={showConfirmPassword ? "text" : "password"}
@@ -507,7 +508,7 @@ export default function RegisterPage() {
 
               {/* Role Information Display */}
               {form.role && (
-                <div style={{
+                <div className="auth-field" style={{
                   width: '400px',
                   backgroundColor: '#dcfce7',
                   border: '1px solid #16a34a',
@@ -528,7 +529,7 @@ export default function RegisterPage() {
               )}
 
               {/* Employee ID Input */}
-              <div style={{ width: '400px', position: 'relative' }}>
+              <div className="auth-field" style={{ width: '400px', position: 'relative' }}>
                 <input
                   type="text"
                   name="employeeId"
@@ -592,7 +593,7 @@ export default function RegisterPage() {
 
               {/* Employee ID Validation Status */}
               {form.employeeId && (
-                <div style={{ width: '400px' }}>
+                <div className="auth-field" style={{ width: '400px' }}>
                   <div style={{
                     width: '100%',
                     height: '50px',

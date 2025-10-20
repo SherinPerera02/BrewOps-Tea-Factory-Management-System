@@ -1,0 +1,78 @@
+/* Mobile-only responsive overrides for Staff Dashboard
+   These rules only apply on narrow screens and intentionally avoid
+   touching desktop styles. Import this globally so no JSX changes
+   are required. */
+
+@media (max-width: 1000px) {
+  /* Stack layout: sidebar above or hidden and main content full-width */
+  .staff-dashboard-layout {
+    display: block !important;
+  }
+
+  /* Collapse sidebar into a top block then hide non-essential items */
+  .staff-dashboard-layout .sidebar, .staff-dashboard-layout .staff-sidebar {
+    width: 100% !important;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+  }
+
+  /* Make main fill the screen under the sidebar */
+  .staff-dashboard-main {
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 0 12px !important;
+  }
+
+  /* Make card grids responsive */
+  .metrics-grid, .inventory-grid, .supplier-performance-grid, .status-overview, .dashboard-cards {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .metric-card, .inventory-card, .supplier-info-card, .top-suppliers-card, .status-item {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Chart containers: allow horizontal scroll on small devices */
+  .chart-container, .bar-chart, .production-chart {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Ensure long tables or lists scroll horizontally */
+  .table-responsive, table {
+    width: 100% !important;
+    overflow-x: auto;
+    display: block;
+  }
+
+  /* Reduce padding on cards to fit small screens */
+  .dashboard-section, .card, .inventory-card, .metric-card, .supplier-info-card {
+    padding: 12px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Single column cards on small phones */
+  .metrics-grid, .inventory-grid, .supplier-performance-grid, .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .staff-dashboard-main {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  /* Increase touch targets where necessary */
+  .metric-card button, .inventory-card button, .top-suppliers-card button {
+    min-height: 44px !important;
+    width: 100% !important;
+  }
+
+  /* Hide secondary info that clutters small screens */
+  .small-hide, .small-hide-mobile {
+    display: none !important;
+  }
+}

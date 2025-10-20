@@ -7,6 +7,7 @@ import Lottie from "lottie-react";
 import Spinner from "../components/Spinner";
 import React, { useEffect, useRef } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import '../styles/auth-responsive.css';
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -220,7 +221,7 @@ export default function LoginPage() {
   return (
     <>
       <Toaster />
-      <div style={{
+      <div className="auth-page" style={{
         width: '100%',
         height: '100vh',
         backgroundColor: '#f9fafb',
@@ -237,7 +238,7 @@ export default function LoginPage() {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
-          <div style={{
+          <div className="auth-card" style={{
             width: '1300px',
             height: '600px',
             backdropFilter: 'blur(4px)',
@@ -247,7 +248,7 @@ export default function LoginPage() {
             overflow: 'hidden'
           }}>
             {/* Left half */}
-            <div style={{
+            <div className="auth-left" style={{
               width: '50%',
               height: '100%',
               display: 'flex',
@@ -318,7 +319,7 @@ export default function LoginPage() {
             </div>
 
             {/* Right half */}
-            <div style={{
+            <div className="auth-right" style={{
               width: '50%',
               height: '100%',
               backgroundColor: 'white',
@@ -335,7 +336,7 @@ export default function LoginPage() {
                 marginBottom: '24px'
               }}>Sign In</h1>
 
-              <div style={{ width: '400px' }}>
+              <div className="auth-field" style={{ width: '400px' }}>
                 <input
                   type="email"
                   placeholder="Enter your email"
@@ -360,7 +361,7 @@ export default function LoginPage() {
                 )}
               </div>
 
-              <div style={{ width: '400px', position: 'relative' }}>
+              <div className="auth-field" style={{ width: '400px', position: 'relative' }}>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Enter your password"
@@ -403,7 +404,7 @@ export default function LoginPage() {
               </div>
 
               {/* Remember Me & Forgot Password */}
-              <div style={{
+              <div className="auth-field" style={{
                 width: '400px',
                 display: 'flex',
                 justifyContent: 'space-between',

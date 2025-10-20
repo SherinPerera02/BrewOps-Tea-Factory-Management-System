@@ -1,0 +1,49 @@
+/* Responsive styles for auth pages (login & register) */
+
+@media (max-width: 900px) {
+  .auth-card {
+    width: 92% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    border-radius: 12px !important;
+  }
+
+  .auth-left, .auth-right {
+    width: 100% !important;
+  }
+
+  .auth-left {
+    padding: 18px !important;
+    text-align: center !important;
+  }
+
+  .auth-right {
+    padding: 18px !important;
+  }
+
+  .auth-field, .auth-right .auth-field {
+    width: 100% !important;
+  }
+
+  .auth-right input, .auth-right select {
+    width: 100% !important;
+  }
+
+  .auth-card .auth-left .lottie, .auth-left .lottie {
+    max-width: 220px !important;
+    margin: 12px auto !important;
+  }
+
+  button.hamburger-mobile { display: block; }
+}
+
+@media (max-width: 420px) {
+  .auth-card { padding: 8px !important; }
+  .auth-right { padding: 12px !important; }
+  .auth-right h1 { font-size: 22px !important; }
+}
+
+/* Ensure inputs and controls are touch-friendly */
+input[type="email"], input[type="password"], input[type="text"], select, button {
+  touch-action: manipulation;
+}

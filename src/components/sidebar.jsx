@@ -11,6 +11,13 @@ import './sidebar.css';
 
 const Sidebar = ({ dashboardData, onMenuClick }) => {
   const [activeMenu, setActiveMenu] = React.useState('dashboard');
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const handler = () => setIsOpen(o => !o);
+    window.addEventListener('toggleSidebar', handler);
+    return () => window.removeEventListener('toggleSidebar', handler);
+  }, []);
   
   // Get logged-in user info from localStorage or sessionStorage
   const getUserInfo = () => {
@@ -26,12 +33,13 @@ const Sidebar = ({ dashboardData, onMenuClick }) => {
 
   const handleMenuClick = (menuKey) => {
     setActiveMenu(menuKey);
+    setIsOpen(false); // close on mobile when a menu is selected
     if (onMenuClick) {
       onMenuClick(menuKey);
     }
   };
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-content">
         {/* Admin Profile Section */}
         <div className="admin-profile">

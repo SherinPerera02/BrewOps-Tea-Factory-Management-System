@@ -11,6 +11,14 @@ import { MdDashboard } from 'react-icons/md';
 import './sidebar.css';
 
 const StaffSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const handler = () => setIsOpen(o => !o);
+    window.addEventListener('toggleSidebar', handler);
+    return () => window.removeEventListener('toggleSidebar', handler);
+  }, []);
+
   // Get logged-in user info from localStorage or sessionStorage
   const getUserInfo = () => {
     try {
@@ -23,8 +31,14 @@ const StaffSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
 
   const user = getUserInfo();
 
+  const handleClick = (cb) => {
+    // close mobile sidebar when a menu item is selected
+    try { setIsOpen(false); } catch (e) {}
+    if (cb && typeof cb === 'function') cb();
+  };
+
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-content">
         {/* Staff Profile Section */}
         <div className="admin-profile">
@@ -46,7 +60,7 @@ const StaffSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
           <Link 
             to="/staff-dashboard" 
             className={`nav-link ${activeContent === 'dashboard' ? 'active' : 'inactive'}`}
-            onClick={() => setActiveContent && setActiveContent('dashboard')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('dashboard'))}
           >
             <MdDashboard className="nav-link-icon" />
             <span className="nav-link-text">Dashboard</span>
@@ -54,7 +68,7 @@ const StaffSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
           
           <div 
             className={`nav-link ${activeContent === 'reports' ? 'active' : 'inactive'}`}
-            onClick={() => setActiveContent && setActiveContent('reports')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('reports'))}
             style={{ cursor: 'pointer' }}
           >
             <FaChartBar className="nav-link-icon" />
@@ -63,7 +77,7 @@ const StaffSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
           
           <div 
             className={`nav-link ${activeContent === 'supply-records' ? 'active' : 'inactive'}`}
-            onClick={() => setActiveContent && setActiveContent('supply-records')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('supply-records'))}
             style={{ cursor: 'pointer' }}
           >
             <FaLeaf className="nav-link-icon" />
@@ -72,7 +86,7 @@ const StaffSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
           
           <div 
             className={`nav-link ${activeContent === 'payments' ? 'active' : 'inactive'}`}
-            onClick={() => setActiveContent && setActiveContent('payments')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('payments'))}
             style={{ cursor: 'pointer' }}
           >
             <FaCreditCard className="nav-link-icon" />
@@ -82,7 +96,7 @@ const StaffSidebar = ({ dashboardData, activeContent, setActiveContent }) => {
           <Link 
             to="/staff-dashboard" 
             className={`nav-link ${activeContent === 'suppliers' ? 'active' : 'inactive'}`}
-            onClick={() => setActiveContent && setActiveContent('suppliers')}
+            onClick={() => handleClick(() => setActiveContent && setActiveContent('suppliers'))}
           >
             <FaUsers className="nav-link-icon" />
             <span>Manage Suppliers</span>

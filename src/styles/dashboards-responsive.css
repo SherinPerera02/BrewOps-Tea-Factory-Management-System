@@ -1,0 +1,70 @@
+/* Shared responsive rules for Admin, Supplier, Staff, and Production Manager dashboards */
+
+/* Container adjustments */
+.dashboard-container {
+  padding: 24px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.dashboard-main {
+  width: 100%;
+}
+
+.dashboard-sidebar {
+  width: 100%;
+}
+
+/* Cards and widgets */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.dashboard-card {
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  background: #fff;
+}
+
+/* Tables overflow handling */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Make elements touch friendly */
+.dashboard-card button, .dashboard-card a {
+  min-height: 44px;
+}
+
+/* Mobile layout */
+@media (max-width: 1000px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sidebar-collapsible { display: none; }
+}
+
+@media (max-width: 640px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-container { padding: 12px; }
+  .dashboard-card { padding: 12px; }
+
+  .small-hide { display: none; }
+}

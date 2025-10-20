@@ -1,0 +1,14 @@
+/* Mobile-only responsive overrides for Supplier Dashboard */
+
+@media (max-width: 1000px) {
+  .supplier-dashboard-layout { display: block !important; }
+  .supplier-dashboard-main, .supplier-dashboard-layout .supplier-dashboard-main { width: 100% !important; padding: 0 12px !important; box-sizing: border-box; }
+  .supplier-metrics-grid, .supplier-quick-stats, .supplier-dashboard-section .supplier-metrics-grid { display: grid !important; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .supplier-metric-card, .supplier-info-card { width: 100% !important; }
+  .chart-container, .supplier-info-content { overflow-x: auto; }
+}
+
+@media (max-width: 640px) {
+  .supplier-metrics-grid, .supplier-quick-stats { grid-template-columns: 1fr; }
+  .supplier-dashboard-main { padding-left: 8px !important; padding-right: 8px !important; }
+}

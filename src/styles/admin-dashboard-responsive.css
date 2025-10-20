@@ -1,0 +1,17 @@
+/* Mobile-only responsive overrides for Admin Dashboard */
+
+@media (max-width: 1000px) {
+  .admin-main-layout { display: block !important; }
+  .admin-sidebar-container, .admin-content-area { width: 100% !important; box-sizing: border-box; }
+  .main-stats-grid, .role-stats-grid, .status-overview-grid { display: grid !important; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-card, .role-card, .status-card { width: 100% !important; }
+  .system-alerts-grid { display: grid !important; grid-template-columns: 1fr; gap: 12px; }
+  .table-responsive, table { display: block; overflow-x: auto; width: 100%; }
+  .admin-content-wrapper { padding: 12px !important; }
+}
+
+@media (max-width: 640px) {
+  .main-stats-grid, .role-stats-grid, .status-overview-grid { grid-template-columns: 1fr; }
+  .admin-content-wrapper { padding: 8px !important; }
+  .small-hide-mobile { display: none !important; }
+}

@@ -460,14 +460,17 @@ const NavigationBar = ({ onMenuClick }) => {
     <>
       <nav className="navbar">
         <div className="navbar-left">
-          {onMenuClick && (
-            <button onClick={onMenuClick} className="hamburger-button">
+          <button onClick={() => {
+            // Dispatch a global toggle event so sidebars can open on mobile
+            try { window.dispatchEvent(new Event('toggleSidebar')); } catch (e) {}
+            // If a page provided an onMenuClick callback, call it too
+            try { if (typeof onMenuClick === 'function') onMenuClick(); } catch (e) {}
+          }} className="hamburger-button">
               {/* simple hamburger icon */}
               <svg className="hamburger-icon" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" d="M3 5h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2zm0 4h14a1 1 0 110 2H3a1 1 0 110-2z" clipRule="evenodd" />
               </svg>
             </button>
-          )}
           <h1 className="brand-title" onClick={() => navigate('/')}>BrewOps</h1>
         </div>
         <div className="navbar-right">

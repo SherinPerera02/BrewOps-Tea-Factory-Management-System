@@ -1,0 +1,14 @@
+/* Mobile-only responsive overrides for Production Manager Dashboard */
+
+@media (max-width: 1000px) {
+  .production-main-layout { display: block !important; }
+  .production-sidebar-container, .production-content-area { width: 100% !important; box-sizing: border-box; }
+  .metrics-grid, .inventory-grid, .overview-section { display: grid !important; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .metric-card, .inventory-card { width: 100% !important; }
+  .chart-container, .bar-chart, .production-chart { overflow-x: auto; }
+}
+
+@media (max-width: 640px) {
+  .metrics-grid, .inventory-grid { grid-template-columns: 1fr; }
+  .production-content-wrapper { padding: 8px !important; }
+}
